@@ -3,7 +3,7 @@ data "google_certificate_manager_certificates" "this" {
 }
 
 locals {
-  certificate_ids = data.google_certificate_manager_certificates.this.certificates.*.id
+  certificate_ids = [ for cert in data.google_certificate_manager_certificates.this.certificates : cert.name ]
   certificate_id  = try(local.certificate_ids[0], "")
 }
 
