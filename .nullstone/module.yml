@@ -1,0 +1,13 @@
+org_name: nullstone
+name: gcp-existing-certificate
+friendly_name: Import existing certificate
+description: Import an existing certificate that was created in GCP Certificate Manager
+category: block
+subcategory: ""
+provider_types:
+    - gcp
+platform: certificate-manager
+subplatform: ""
+type: ""
+appCategories: []
+is_public: true
