@@ -5,6 +5,9 @@ data "google_certificate_manager_certificates" "this" {
 locals {
   certificate_ids = [ for cert in data.google_certificate_manager_certificates.this.certificates : cert.name ]
   certificate_id  = try(local.certificate_ids[0], "")
+
+  certificates_domains = [ for cert in data.google_certificate_manager_certificates.this.certificates :cert.san_dnsnames ]
+  certificate_domains  = try(local.certificates_domains[0], "")
 }
 
 resource "google_certificate_manager_certificate_map" "this" {
